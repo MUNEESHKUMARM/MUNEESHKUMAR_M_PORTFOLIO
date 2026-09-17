@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#121318" stroke="#d4af37" stroke-width="4"/>
+  <text x="50" y="66" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="900" font-size="52" fill="url(#goldGrad)" text-anchor="middle">M</text>
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe57f"/>
+      <stop offset="60%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#996515"/>
+    </linearGradient>
+  </defs>
+</svg>
