@@ -159,15 +159,18 @@ export default async function handler(req, res) {
     }
 
     // 5. Google Sheets Integration (via Google Apps Script Web App)
-    const googleSheetWebAppUrl = getEnvVar('GOOGLE_SHEET_WEB_APP_URL');
-    const isPlaceholderSheetUrl = !googleSheetWebAppUrl || googleSheetWebAppUrl.includes('your_google_apps_script_id');
+    const googleSheetWebAppUrl =
+      getEnvVar('GOOGLE_SHEET_WEB_APP_URL') ||
+      getEnvVar('VITE_GOOGLE_SCRIPT_URL') ||
+      'https://script.google.com/macros/s/AKfycby8ic3baHIi45edSDtINoWZ2pw7bXxP5wUWa0zUlX6m9skuRGYBYED3jV0D3T8lsjzUbw/exec';
 
-    if (googleSheetWebAppUrl && !isPlaceholderSheetUrl) {
+    let sheetSuccess = false;
+    if (googleSheetWebAppUrl) {
       try {
         const sheetRes = await fetch(googleSheetWebAppUrl, {
           method: 'POST',
           redirect: 'follow',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
             name: trimmedName,
             email: trimmedEmail,
@@ -177,15 +180,14 @@ export default async function handler(req, res) {
 
         const sheetText = await sheetRes.text();
         if (sheetRes.ok && !sheetText.includes('Page not found') && !sheetText.includes('unable to open')) {
-          console.log('[CONTACT API] Successfully dispatched row to Google Sheet Web App.');
+          sheetSuccess = true;
+          console.log('[CONTACT API] Successfully dispatched row to Google Sheet Web App:', sheetText.substring(0, 150));
         } else {
           console.warn('[CONTACT API] Google Sheet Web App status:', sheetRes.status, sheetText.substring(0, 150));
         }
       } catch (err) {
         console.error('[CONTACT API] Google Sheet dispatch exception:', err);
       }
-    } else {
-      console.log('[CONTACT API] GOOGLE_SHEET_WEB_APP_URL not configured yet. Skipping Sheet forward.');
     }
 
     // 6. Secondary Channel: Optional Telegram Bot Instant Alert
@@ -218,8 +220,8 @@ export default async function handler(req, res) {
       }
     }
 
-    // 7. Strict Channel Priority Evaluation
-    if (emailSuccess) {
+    // 7. Channel Success Evaluation
+    if (emailSuccess || sheetSuccess) {
       return res.status(200).json({
         success: true,
         message: 'Your message has been sent successfully!',
