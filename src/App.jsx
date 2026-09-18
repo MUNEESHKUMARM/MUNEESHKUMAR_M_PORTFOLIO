@@ -389,14 +389,17 @@ function ContactCard({ flipped, onFlip }) {
 }
 
 function DocPreviewModal({ doc, onClose }) {
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose()
-    }
-    if (doc) {
-      document.body.style.overflow = 'hidden'
-      window.addEventListener('keydown', handleKeyDown)
-    }
+    setLoading(true)
+  }, [doc])
+
+  useEffect(() => {
+    if (!doc) return
+    const handleKeyDown = (e) => e.key === 'Escape' && onClose()
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
     return () => {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
@@ -423,12 +426,21 @@ function DocPreviewModal({ doc, onClose }) {
             <button className="resume-close-btn" onClick={onClose} aria-label="Close modal">✕</button>
           </div>
         </div>
-        <iframe
-          src={doc.embedUrl}
-          className="resume-modal-iframe"
-          title={doc.title}
-          allow="autoplay"
-        />
+        <div className="modal-iframe-wrapper">
+          {loading && (
+            <div className="modal-loading-indicator">
+              <div className="modal-gold-spinner" />
+              <span>Loading Google Document Preview...</span>
+            </div>
+          )}
+          <iframe
+            src={doc.embedUrl}
+            className={`resume-modal-iframe ${loading ? 'iframe-loading' : 'iframe-ready'}`}
+            title={doc.title}
+            allow="autoplay"
+            onLoad={() => setLoading(false)}
+          />
+        </div>
       </div>
     </div>
   )
