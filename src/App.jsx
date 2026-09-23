@@ -109,7 +109,7 @@ const education = [
 const RESUME_DOC = {
   title: 'MUNEESHKUMAR M — RESUME PREVIEW',
   driveUrl: RESUME_DRIVE_LINK,
-  embedUrl: 'https://drive.google.com/file/d/1P52hfxNY6wWmF578ZggxgfWkLViJ_s-Y/view?usp=sharing',
+  embedUrl: 'https://drive.google.com/file/d/1P52hfxNY6wWmF578ZggxgfWkLViJ_s-Y/preview',
 }
 
 const certifications = [
