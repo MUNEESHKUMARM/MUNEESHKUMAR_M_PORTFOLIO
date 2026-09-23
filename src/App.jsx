@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 
-const RESUME_DRIVE_LINK = 'https://drive.google.com/file/d/1TAZAVz1Bml5ZAjhYEAZxGZTkOxHF_zwW/view?usp=sharing'
+const RESUME_DRIVE_LINK = 'https://drive.google.com/file/d/1P52hfxNY6wWmF578ZggxgfWkLViJ_s-Y/view?usp=sharing'
 
 const FIGMA_ASSETS = {
   profile:
