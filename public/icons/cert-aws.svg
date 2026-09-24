@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect x="6" y="6" width="36" height="36" rx="10" fill="url(#awsGrad)" stroke="#FF9900" stroke-width="1.5"/>
+  <path d="M16 26c1.5 2 4.5 3 8 3 4 0 7-1.5 8.5-3.5" stroke="#FF9900" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M30 25.5l3 1-1.5-3" fill="#FF9900"/>
+  <path d="M16 19.5c0-2 1.5-3.5 3.5-3.5 1.2 0 2.2.6 2.8 1.5.7-1.5 2.2-2.5 4-2.5 2.5 0 4.5 2 4.5 4.5 0 .3 0 .7-.1 1H16v-1z" fill="#FFF"/>
+  <defs>
+    <linearGradient id="awsGrad" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1C202B"/>
+      <stop offset="1" stop-color="#11141C"/>
+    </linearGradient>
+  </defs>
+</svg>

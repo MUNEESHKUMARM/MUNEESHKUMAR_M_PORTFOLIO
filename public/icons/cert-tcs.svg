@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect x="6" y="6" width="36" height="36" rx="10" fill="url(#tcsGrad)" stroke="#D4AF37" stroke-width="1.5"/>
+  <path d="M24 14l2.8 5.7 6.3.9-4.5 4.4 1.1 6.3-5.7-3-5.7 3 1.1-6.3-4.5-4.4 6.3-.9L24 14z" fill="#FFE57F"/>
+  <defs>
+    <linearGradient id="tcsGrad" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F2430"/>
+      <stop offset="1" stop-color="#0F131D"/>
+    </linearGradient>
+  </defs>
+</svg>

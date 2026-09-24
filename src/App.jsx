@@ -1,32 +1,23 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { SKILL_ICONS, SKILL_CATEGORIES, SKILL_LINKS } from './components/SkillIcons'
 
 const RESUME_DRIVE_LINK = 'https://drive.google.com/file/d/1P52hfxNY6wWmF578ZggxgfWkLViJ_s-Y/view?usp=sharing'
 
 const FIGMA_ASSETS = {
   profile:
     'https://www.figma.com/api/mcp/asset/dff3c27f-9bb0-495a-814d-d028504359df.png',
-  arrow:
-    'https://www.figma.com/api/mcp/asset/403f1f52-1996-454a-8f47-aa1307fa6d49.svg',
-  resume:
-    'https://www.figma.com/api/mcp/asset/b47e31c7-c5b6-4903-8460-a0fc792752b1.svg',
-  file:
-    'https://www.figma.com/api/mcp/asset/7c4fbd5a-8300-4d72-9b39-29ddffb5b67e.svg',
-  linkedin:
-    'https://www.figma.com/api/mcp/asset/150e052d-3817-426d-b975-a795ec27733a.svg',
-  github:
-    'https://www.figma.com/api/mcp/asset/50041288-7c42-4ca5-bc11-e36b5f038e1f.svg',
-  cert1:
-    'https://www.figma.com/api/mcp/asset/84fd74c1-7ec8-4b46-aae1-734064c8ce31.svg',
-  preview:
-    'https://www.figma.com/api/mcp/asset/6c4eb1f3-5913-4915-98cc-d4f9beb1223a.svg',
-  cert2:
-    'https://www.figma.com/api/mcp/asset/e300de25-0f0d-4f31-a0b9-1f3f5ef4cdf4.svg',
-  cert3:
-    'https://www.figma.com/api/mcp/asset/159c2e3c-0c96-4778-93d2-31afaa548d8a.svg',
-  ext:
-    'https://www.figma.com/api/mcp/asset/ade59689-539b-4f88-8166-8bbdb0cd5dc2.svg',
-  connect:
-    'https://www.figma.com/api/mcp/asset/39c34ef3-f9f7-4852-9a1b-9c2b7670dd66.svg',
+  arrow: '/icons/arrow-icon.svg',
+  resume: '/icons/resume-icon.svg',
+  file: '/icons/file-icon.svg',
+  linkedin: '/icons/linkedin-icon.svg',
+  github: '/icons/github-icon.svg',
+  cert1: '/icons/cert-google.svg',
+  preview: '/icons/preview-icon.svg',
+  cert2: '/icons/cert-tcs.svg',
+  cert3: '/icons/cert-aws.svg',
+  cert4: '/icons/cert-naan.svg',
+  ext: '/icons/ext-icon.svg',
+  connect: '/icons/connect-icon.svg',
 }
 
 const navItems = [
@@ -144,7 +135,7 @@ const certifications = [
     issuer: 'ISSUER: NAAN MUDHALVAN / HCL',
     title: 'Naan Mudhalvan EBPL Certificate',
     body: 'Enterprise training on workplace readiness, corporate communication, software engineering practices, and digital workflows by HCL.',
-    icon: FIGMA_ASSETS.cert1,
+    icon: FIGMA_ASSETS.cert4,
     brand: '★ NAAN MUDHALVAN / HCL',
     driveUrl: 'https://drive.google.com/file/d/17NymX-J3WVgb6Buwz13rfqyWxqhqf29s/view?usp=sharing',
     embedUrl: 'https://drive.google.com/file/d/17NymX-J3WVgb6Buwz13rfqyWxqhqf29s/preview',
@@ -191,11 +182,27 @@ function GlassSkillCard({ skill }) {
           <i />
         </header>
         <div className="tag-cloud">
-          {skill.items.map((item) => (
-            <span key={item} className={skill.accentItems?.includes(item) ? 'accent' : ''}>
-              {item}
-            </span>
-          ))}
+          {skill.items.map((item) => {
+            const icon = SKILL_ICONS[item]
+            const category = SKILL_CATEGORIES[item]
+            const url = SKILL_LINKS[item]
+            const isAccent = skill.accentItems?.includes(item)
+
+            return (
+              <a
+                key={item}
+                href={url || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`skill-chip ${isAccent ? 'accent' : ''}`}
+                data-tooltip={category ? `${item} • ${category}` : item}
+                aria-label={`${item} (${category || 'Technical Skill'})`}
+              >
+                {icon && <span className="skill-chip-icon">{icon}</span>}
+                <span className="skill-chip-name">{item}</span>
+              </a>
+            )
+          })}
         </div>
       </div>
       <footer className="card-foot">{skill.foot}</footer>
@@ -277,15 +284,15 @@ function ProjectCard({ variant = 'finance' }) {
     <article className="glass-card project-card">
       <div className="project-content">
         <div className="project-copy">
-          <div className="project-type"><span className="project-dot" /> {isFinance ? 'FLUTTER & SQLITE' : 'REACT & FASTAPI'}</div>
+          <div className="project-type"><span className="project-dot" /> {isFinance ? 'FLUTTER & SQLITE' : 'REACT & FASTAPI • COMING SOON'}</div>
           <h3>{isFinance ? 'Expense Mate' : 'AI-Driven Cyber Digital Twin Platform'}</h3>
           <p className="project-subtitle">{isFinance ? 'Personal Finance Management App' : 'Secure Full-Stack Cybersecurity & Real-Time Reporting Platform'}</p>
           <p className="body-copy">
             {isFinance
               ? 'Developed a Flutter-based finance management app for expense tracking, budgeting, and financial analytics. Designed with a clean mobile UI that guarantees seamless offline-first capability alongside cloud authentication.'
-              : 'Engineered a secure full-stack Cyber Digital Twin platform. Features robust authentication, email OTP verification, RESTful APIs, role-based access control (RBAC), and a modular scalable backend architecture designed for digital twin visualization, threat monitoring, risk prediction, and real-time dashboard reporting.'}
+              : 'Currently under active development — building a secure full-stack Cyber Digital Twin platform with authentication, email OTP verification, RESTful APIs, role-based access control (RBAC), threat visualization, risk prediction, and real-time reporting.'}
           </p>
-          <div className="tiny-label">{isFinance ? 'VERIFIED SYSTEM FEATURES:' : 'VERIFIED ARCHITECTURAL CAPABILITIES:'}</div>
+          <div className="tiny-label">{isFinance ? 'VERIFIED SYSTEM FEATURES:' : 'CURRENT DEVELOPMENT AREAS:'}</div>
           <div className="feature-grid">
             {(isFinance
               ? ['Firebase Authentication', 'SQLite Secure Local Storage', 'Budget Tracking & Alerts', 'Category-wise Expense Insights']
@@ -295,9 +302,15 @@ function ProjectCard({ variant = 'finance' }) {
             ))}
           </div>
           <div className="tech-row">
-            {(isFinance ? ['Flutter', 'SQLite', 'Firebase', 'Analytics'] : ['React.js', 'FastAPI', 'MySQL', 'JWT', 'Python', 'SMTP']).map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
+            {(isFinance ? ['Flutter', 'SQLite', 'Firebase', 'Analytics'] : ['React.js', 'FastAPI', 'MySQL', 'JWT', 'Python', 'SMTP']).map((tag) => {
+              const icon = SKILL_ICONS[tag]
+              return (
+                <span key={tag}>
+                  {icon && <span className="skill-chip-icon">{icon}</span>}
+                  {tag}
+                </span>
+              )
+            })}
           </div>
         </div>
         {isFinance ? <FinanceVisual /> : <CyberVisual />}
@@ -330,16 +343,27 @@ function CyberVisual() {
   return (
     <div className="project-visual cyber">
       <div className="cyber-grid" />
-      <div className="visual-header"><span>CYBER_TWIN_NODE.01</span><strong className="green-status"><i /> THREAT MONITORED</strong></div>
-      <div className="visual-body">
-        <div className="api-card">
-          <div><small>FASTAPI REST ENDPOINT</small><small>ROLE: ADMIN</small></div>
-          <b>/api/v1/twin/risk-matrix</b>
-          <div className="risk-meter"><span /></div>
-        </div>
-        <div className="api-row"><span>OTP DISPATCH: <b>ACTIVE</b></span><span>JWT PROTOCOL: <b>HS256</b></span></div>
+      <div className="visual-header">
+        <span>CYBER_TWIN_NODE.01</span>
+        <strong className="gold-status"><i /> ACTIVE DEVELOPMENT</strong>
       </div>
-      <div className="visual-footer"><span>Modular Scalable Backend</span><span>Real-Time Dashboard</span></div>
+      <div className="visual-body coming-soon-body">
+        <div className="coming-soon-card">
+          <div className="coming-soon-pill">
+            <span className="pulse-dot" /> ACTIVE DEVELOPMENT
+          </div>
+          <h4 className="coming-soon-title">COMING SOON</h4>
+          <h5 className="coming-soon-project">AI-Driven Cyber Digital Twin Platform</h5>
+          <p className="coming-soon-desc">Currently under active development.</p>
+          <span className="coming-soon-sub">
+            Building secure cybersecurity, digital twin visualization, risk intelligence, and real-time reporting capabilities.
+          </span>
+        </div>
+      </div>
+      <div className="visual-footer">
+        <span>ACTIVE DEVELOPMENT</span>
+        <span>COMING SOON</span>
+      </div>
     </div>
   )
 }
