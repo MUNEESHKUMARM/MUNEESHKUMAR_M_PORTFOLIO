@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://muneeshkumar-portfolio.vercel.app/sitemap.xml
+Sitemap: https://muneeshkumar.vercel.app/sitemap.xml

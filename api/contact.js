@@ -59,7 +59,7 @@ export default async function handler(req, res) {
       timeStyle: 'medium',
     });
 
-    const portfolioUrl = getEnvVar('PORTFOLIO_URL') || 'https://muneeshkumar-portfolio.vercel.app';
+    const portfolioUrl = getEnvVar('PORTFOLIO_URL') || 'https://muneeshkumar.vercel.app';
     const recipientEmail = getEnvVar('CONTACT_EMAIL') || 'muneeshkumar.tech@gmail.com';
     const resendApiKey = getEnvVar('RESEND_API_KEY');
 
