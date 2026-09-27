@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { SKILL_ICONS, SKILL_CATEGORIES, SKILL_LINKS } from './components/SkillIcons'
 
-const RESUME_DRIVE_LINK = 'https://drive.google.com/file/d/1er448efSSUhQskuTeQMytgN41UrOA530/view?usp=sharing'
+const RESUME_DRIVE_LINK = 'https://drive.google.com/file/d/15fnSRXvVZtmZ1AA8cyLIOFqYE39nwyba/view?usp=sharing'
 
 const FIGMA_ASSETS = {
   profile:
@@ -100,7 +100,7 @@ const education = [
 const RESUME_DOC = {
   title: 'MUNEESHKUMAR M — RESUME PREVIEW',
   driveUrl: RESUME_DRIVE_LINK,
-  embedUrl: 'https://drive.google.com/file/d/1er448efSSUhQskuTeQMytgN41UrOA530/preview',
+  embedUrl: 'https://drive.google.com/file/d/15fnSRXvVZtmZ1AA8cyLIOFqYE39nwyba/preview',
 }
 
 const certifications = [
