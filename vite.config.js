@@ -6,6 +6,13 @@ export default defineConfig(({ mode }) => {
   Object.assign(process.env, env)
 
   return {
+    base: '/',
+    publicDir: 'public',
+    build: {
+      outDir: 'dist',
+      copyPublicDir: true,
+      sourcemap: false
+    },
     plugins: [
       react(),
       {
