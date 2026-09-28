@@ -4,8 +4,7 @@ import { SKILL_ICONS, SKILL_CATEGORIES, SKILL_LINKS } from './components/SkillIc
 const RESUME_DRIVE_LINK = 'https://drive.google.com/file/d/15fnSRXvVZtmZ1AA8cyLIOFqYE39nwyba/view?usp=sharing'
 
 const FIGMA_ASSETS = {
-  profile:
-    'https://www.figma.com/api/mcp/asset/dff3c27f-9bb0-495a-814d-d028504359df.png',
+  profile: '/muneeshkumar_profile.jpg',
   arrow: '/icons/arrow-icon.svg',
   resume: '/icons/resume-icon.svg',
   file: '/icons/file-icon.svg',
