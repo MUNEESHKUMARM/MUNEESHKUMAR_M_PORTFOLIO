@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { SKILL_ICONS, SKILL_CATEGORIES, SKILL_LINKS } from './components/SkillIcons'
 
-const RESUME_DRIVE_LINK = 'https://drive.google.com/file/d/15fnSRXvVZtmZ1AA8cyLIOFqYE39nwyba/view?usp=sharing'
+const RESUME_DRIVE_LINK = 'https://drive.google.com/file/d/1Yep7AzxAOkfoeLuenMPL8lMfKnw_Tucd/view?usp=sharing'
 
 const FIGMA_ASSETS = {
   profile: '/muneeshkumar_profile.jpg',
